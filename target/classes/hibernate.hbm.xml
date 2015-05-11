@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<hibernate-mapping xmlns="http://www.hibernate.org/xsd/hibernate-mapping"
+ 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.hibernate.org/xsd/hibernate-mapping classpath://org/hibernate/hibernate-mapping-4.0.xsd">
+
+ <!-- 
+	<class name="com.avenuecode.jchallenge.domain.Order" table="ORDERS">
+        <id name="orderId" column="ORDER_ID">
+            <generator class="native"/>
+        </id>
+        <property name="orderDate" column="ORDER_DATE" />
+        <list name="orderItems" table="ORDER_ITEMS">
+            <key column="ORDER_ID"/>
+            <list-index column="ORDER_ITEM_ID"/>
+            <composite-element class="com.avenuecode.jchallenge.domain.OrderItem">
+                <property name="quantity"/>
+                <many-to-one name="product" column="PRODUCT_ID" class="com.avenuecode.jchallenge.domain.Product"/>
+            </composite-element>
+        </list>
+    </class> -->
+    
+    <class name="com.avenuecode.jchallenge.domain.Product" table="PRODUCTS">
+        <id name="productId" column="PRODUCT_ID">
+            <generator class="native"/>
+        </id>
+        <property name="name" column="NAME" />
+        <property name="price" column="PRICE" />
+    </class>
+</hibernate-mapping>
