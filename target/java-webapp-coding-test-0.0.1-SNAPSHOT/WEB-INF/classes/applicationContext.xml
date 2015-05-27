@@ -9,11 +9,21 @@
 		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.0.xsd
 		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.0.xsd">
 
+	<context:component-scan base-package="com.avenuecode.jchallenge.*" />
+	
 	<tx:annotation-driven/>
+	
 
 	<bean id="transactionManager" class="org.springframework.orm.hibernate4.HibernateTransactionManager">
         <property name="sessionFactory" ref="sessionFactory"/>
     </bean>
+	
+	   
+    <bean class="com.avenuecode.jchallenge.rest.OrderResource"/>
+    <bean class="com.avenuecode.jchallenge.rest.ProductResource"/>
+    <bean id="productDao" class="com.avenuecode.jchallenge.dao.ProductDaoImpl"/>    
+    <bean id="orderDao" class="com.avenuecode.jchallenge.dao.OrderDaoImpl"/> 
+    
     
     <bean id="sessionFactory" class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">
         <property name="mappingResources">
@@ -30,8 +40,8 @@
                 <prop key="hibernate.connection.isolation">2</prop>
                 <prop key="hibernate.connection.autocommit">false</prop>
                 <prop key="hibernate.generate_statistics">true</prop>
-                <prop key="hibernate.show_sql">false</prop>
-                <prop key="hibernate.format_sql">false</prop>
+                <prop key="hibernate.show_sql">true</prop>
+                <prop key="hibernate.format_sql">true</prop>
                 <prop key="hibernate.use_sql_comments">true</prop>
                 <prop key="hibernate.jdbc.fetch_size">100</prop>
                 <prop key="hibernate.jdbc.batch_size">30</prop>

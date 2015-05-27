@@ -18,12 +18,11 @@
         <property name="sessionFactory" ref="sessionFactory"/>
     </bean>
 	
-	   
     <bean class="com.avenuecode.jchallenge.rest.OrderResource"/>
     <bean class="com.avenuecode.jchallenge.rest.ProductResource"/>
-    <bean id="productDao" class="com.avenuecode.jchallenge.dao.ProductDaoImpl"/>    
-    <bean id="orderDao" class="com.avenuecode.jchallenge.dao.OrderDaoImpl"/> 
-    
+    <bean class="com.avenuecode.jchallenge.dao.ProductDaoImpl"/>    
+    <bean class="com.avenuecode.jchallenge.dao.OrderDaoImpl"/> 
+    <bean class="org.modelmapper.ModelMapper" />
     
     <bean id="sessionFactory" class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">
         <property name="mappingResources">

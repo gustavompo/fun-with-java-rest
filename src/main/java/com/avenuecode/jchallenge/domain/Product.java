@@ -3,9 +3,7 @@ package com.avenuecode.jchallenge.domain;
 public class Product {
 	
 	private int productId;
-	
 	private String name;
-	
 	private double price;
 
 	public int getProductId() {

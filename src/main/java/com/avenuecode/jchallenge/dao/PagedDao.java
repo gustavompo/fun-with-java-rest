@@ -3,7 +3,6 @@ package com.avenuecode.jchallenge.dao;
 import java.lang.reflect.ParameterizedType;
 import java.util.List;
 
-import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -12,24 +11,24 @@ import org.springframework.transaction.annotation.Transactional;
 @Repository
 @Transactional
 public abstract class PagedDao<T>{
-	public static int PAGE_SIZE = 10;
+	public static int MAXIMUM_LIMIT = 100;
 	
 	@Autowired
 	private SessionFactory sessionFactory;
 
 	/**
 	 * Lists items given a first index indicator and the page limit size
-	 * @param first - The start index
+	 * @param limit - The limit of results
+	 * @param offset - The starting point to return
 	 * @return list of items of type T
 	 */
 	@SuppressWarnings("unchecked")
-	protected List<T> list(int first){
-		Session session = sessionFactory.openSession();
-		
-		return session
+	protected List<T> list(int limit, int offset){
+		return sessionFactory
+				.getCurrentSession()
 				.createCriteria(classFromGenerics())
-				.setFirstResult(first)
-				.setMaxResults(PAGE_SIZE)
+				.setFirstResult(offset)
+				.setMaxResults(fitLimit(limit))
 				.list();
 	}
 	
@@ -51,10 +50,22 @@ public abstract class PagedDao<T>{
 	 * @return the id of the saved item
 	 */
 	protected int save(T value){
-		Session session = sessionFactory.getCurrentSession();
-		int saved = (int)session.save(value);
-		return saved;
+		return (int)sessionFactory
+				.getCurrentSession()
+				.save(value);
 	}
+	
+	/**
+	 * Updates the registry
+	 * @param value - the item to be saved
+	 * @return the id of the saved item
+	 */
+	protected void update(T value){
+		sessionFactory
+			.getCurrentSession()
+			.update(value);
+	}
+	
 	
 	/**
 	 * @return the class object of type T
@@ -65,5 +76,8 @@ public abstract class PagedDao<T>{
                 .getGenericSuperclass()).getActualTypeArguments()[0];
 	}
 	
+	private int fitLimit(int limit){
+		return (limit == 0 || limit > MAXIMUM_LIMIT) ? MAXIMUM_LIMIT : limit;
+	}
 	
 }

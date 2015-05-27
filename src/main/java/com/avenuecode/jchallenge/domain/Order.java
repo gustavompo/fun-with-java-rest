@@ -1,15 +1,13 @@
 package com.avenuecode.jchallenge.domain;
 
 import java.util.Date;
-import java.util.List;
+import java.util.Set;
 
 public class Order {
-
+	
 	private int orderId;
-	
 	private Date orderDate;
-	
-	private List<OrderItem> orderItems;
+	private Set<OrderItem> orderItems;
 
 	public int getOrderId() {
 		return orderId;
@@ -27,11 +25,11 @@ public class Order {
 		this.orderDate = orderDate;
 	}
 
-	public List<OrderItem> getOrderItems() {
+	public Set<OrderItem> getOrderItems() {
 		return orderItems;
 	}
 
-	public void setOrderItems(List<OrderItem> orderItems) {
+	public void setOrderItems(Set<OrderItem> orderItems) {
 		this.orderItems = orderItems;
 	}
 

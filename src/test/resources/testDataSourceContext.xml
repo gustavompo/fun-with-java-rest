@@ -2,7 +2,7 @@
 <beans xmlns="http://www.springframework.org/schema/beans"
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.0.xsd">
-	
+
 	<bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource" destroy-method="close">
         <property name="driverClass" value="org.h2.Driver"/>
         <property name="jdbcUrl" value="jdbc:h2:mem:test;db_close_on_exit=false"/>
@@ -28,5 +28,10 @@
         <property name="testConnectionOnCheckin" value="false"/>
         <property name="testConnectionOnCheckout" value="false"/>
     </bean>
-	
+    
+	<bean class="com.avenuecode.jchallenge.rest.OrderResource"/>
+    <bean class="com.avenuecode.jchallenge.rest.ProductResource"/>
+    <bean class="com.avenuecode.jchallenge.dao.ProductDaoImpl"/>    
+    <bean class="com.avenuecode.jchallenge.dao.OrderDaoImpl"/> 
+    <bean class="org.modelmapper.ModelMapper" />
 </beans>

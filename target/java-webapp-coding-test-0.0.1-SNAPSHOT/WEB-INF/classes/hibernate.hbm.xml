@@ -3,4 +3,34 @@
  	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://www.hibernate.org/xsd/hibernate-mapping classpath://org/hibernate/hibernate-mapping-4.0.xsd">
 
+
+ 	<class name="com.avenuecode.jchallenge.domain.OrderItem" table="ORDER_ITEMS">
+        <id name="orderItemId" column="ORDER_ITEM_ID">
+            <generator class="native"/>
+        </id>
+       <many-to-one name="order" column="ORDER_ID" class="com.avenuecode.jchallenge.domain.Order" fetch="select" lazy="proxy"/>
+       <many-to-one name="product" column="PRODUCT_ID" class="com.avenuecode.jchallenge.domain.Product" fetch="select" lazy="proxy"/>
+       <property name="quantity" column="QUANTITY" />
+    </class> 
+    
+	<class name="com.avenuecode.jchallenge.domain.Order" table="ORDERS">
+        <id name="orderId" column="ORDER_ID">
+            <generator class="native"/>
+        </id>
+        <property name="orderDate" column="ORDER_DATE" />
+        
+        <set name="orderItems" table="ORDER_ITEMS" cascade="all" fetch="select" >
+            <key column="ORDER_ID"/>
+            <one-to-many class="com.avenuecode.jchallenge.domain.OrderItem"/>
+        </set> 
+    </class> 
+
+    <class name="com.avenuecode.jchallenge.domain.Product" table="PRODUCTS">
+        <id name="productId" column="PRODUCT_ID">
+            <generator class="native"/>
+        </id>
+        <property name="name" column="NAME" />
+        <property name="price" column="PRICE" />
+    </class>
+    
 </hibernate-mapping>
