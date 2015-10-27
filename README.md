@@ -143,20 +143,3 @@ To run, just: **mvn jetty:run**
 
 To test: **mvn test**
 
-
-# About me and the project #
-I definitelly knew when I read the challenge description that it would really be a challenge for me. 
-For a "native" Java developer, it would be pretty much straightforward and simple, well, a simple RESTfull API with two resources, some integrations and testing is what almost all developers deal with daily... But for me this is the really first time almost every single framework, tool and even the environment. Even what was not actually listed there, like jetty.
-So I just had 3 days of exhausting reading, searching and learning about the Spring framework, it's integration with Jersey, persistence with Hibernate, literally everything.
-
-Testing is something I consider really important in a project, it's present in all my works (in C# .Net), but unfortunatelly I couldn't make it work in a simple and professional way. The testing implementations I tried actually could work with some workarounds, but the code was getting uglier... I made the decision to not send it along with the solution. Not doing a professional work is something I don't consider, when it comes to a real project, I preffer to take some time to read a book and documentation and then continue to develop the right way, using the right tools.
-I'm not saying the solution I'm presenting is the best one could ever do, of course not, but that was the best I could do given time constraints and this being my first contact with almost all tools presents in it. My attentions and worries were not what have in projects I work daily, just like the best pattern to use, application and service layers, features, etc. My worries were all about the technology (tools, frameworks, libraries, environment) and I confess I could have missed something in the others aspects.
-
-My intention was to keep it empty, but considering everything I stated above, I couldn't let the TODO list of the project empty, here are some items:
-
-* Unit testing the API layer, check for right URL routing and calls to the dependencies
-* Integration testing: check for... hmm.. the features, persistence in database and so on
-* Error handling - Check for bad inputs and improve the response error messages
-* Security - this is something that actually depends on the requirements of the API, but for a "presentation", if I could, I would not let it apart
-
-Probably I'm missing some more items in the TODO list, but these were I remember and took note.
