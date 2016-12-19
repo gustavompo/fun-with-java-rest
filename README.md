@@ -1,5 +1,5 @@
 # Interface (resources) documentation #
-The avenuecode.jChallenge RESTfull API provides access to the following resources:
+The jChallenge RESTfull API provides access to the following resources:
 
 /orders
 /products
